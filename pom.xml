@@ -33,5 +33,11 @@
             <version>1.18.38</version>
             <scope>provided</scope>
         </dependency>
+        <!-- RCON -->
+        <dependency>
+            <groupId>org.glavo</groupId>
+            <artifactId>rcon-java</artifactId>
+            <version>3.0</version>
+        </dependency>
     </dependencies>
 </project>
