@@ -60,6 +60,10 @@ public final class EKMSBot implements LongPollingSingleThreadUpdateConsumer {
         long chatId = update.getMessage().getChatId();
         String messageText = update.getMessage().getText();
 
+        if (messageText.charAt(0) == '/') {
+            messageText = messageText.replace("/", "");
+        }
+
         try {
             String result = this._rcon.command(messageText);
 
