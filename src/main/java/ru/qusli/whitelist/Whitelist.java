@@ -1,13 +1,7 @@
 package ru.qusli.whitelist;
 
-import java.util.ArrayList;
-
 public final class Whitelist {
     private final int[] _whitelist;
-
-    public Whitelist(int[] whitelist) {
-        _whitelist = whitelist;
-    }
 
     public Whitelist(String whitelist) {
         _whitelist = this._prepareWhitelist(whitelist);
