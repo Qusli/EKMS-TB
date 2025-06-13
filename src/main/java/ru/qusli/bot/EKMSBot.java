@@ -31,12 +31,12 @@ public final class EKMSBot implements LongPollingSingleThreadUpdateConsumer {
             if (this._whitelist.userInWhitelist(userId)) {
                 this._executeRconCommand(update);
             } else {
-                this._executeNotPermission(update);
+                this._executeSendMessageNotPermission(update);
             }
         }
     }
 
-    private void _executeNotPermission(Update update) {
+    private void _executeSendMessageNotPermission(Update update) {
         long userId = update.getMessage().getFrom().getId();
         long chatId = update.getMessage().getChatId();
 
@@ -59,6 +59,10 @@ public final class EKMSBot implements LongPollingSingleThreadUpdateConsumer {
         long userId = update.getMessage().getFrom().getId();
         long chatId = update.getMessage().getChatId();
         String messageText = update.getMessage().getText();
+
+        if (messageText.charAt(0) == '/') {
+            messageText = messageText.replace("/", "");
+        }
 
         try {
             String result = this._rcon.command(messageText);
